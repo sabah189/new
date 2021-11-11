@@ -14,6 +14,8 @@ if (mysqli_connect_errno())
 
 
 
+  
+
 
 
   //Get Heroku ClearDB connection information
