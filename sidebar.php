@@ -11,7 +11,7 @@
 			<div class="sidebar-menu pt-5">
 				<ul id="accordion-menu ">
 					<li>
-						<a href="index.php" class="dropdown-toggle no-arrow">
+						<a href="home.php" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-house-1"></span><span class="mtext">Tableau de bord</span>
 						</a>
 					
