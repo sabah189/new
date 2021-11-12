@@ -130,7 +130,13 @@ $rs9 = mysqli_query($conn,$req9);
 						</div>
 					</div>
 				</div>
+                <h4>
+							<?php echo ($row1['nom']); ?>						<?php echo ($row1['prenom']); ?>
+							
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									<?php echo ($row1['sexe']); ?> <?php echo ($row1['ddn']); ?>
 
+							</h4>
 				<div class="row clearfix">
 					<div class="col-lg-12 col-md-12 col-sm-12 mb-30">
 						<div class="pd-20 card-box">
