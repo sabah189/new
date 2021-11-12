@@ -197,52 +197,78 @@ $rs9 = mysqli_query($conn,$req9);
 										</div>
 									</div>
                                                                         <!-------------Consultation end-------------------->
-                                    <!-------------Ordonndance begin-------------------->
+  <!-------------Ordonndance begin-------------------->
+
+  <?php 
 
 
-
-                                    
-									<div class="tab-pane fade" id="ordo" role="tabpanel">
-										<div class="pd-20">
-										
-                                        <?php 
-
-
-$req = "select * from categorie_med";
+$req = "select * from categorie_med ";
 $rs = mysqli_query($conn,$req) or die(mysqli_error());
 $option = NULL;
 
 while($row = mysqli_fetch_assoc($rs))
     {
+        
       $option .= '<option value = "'.$row['id_cat'].'"> '.$row['nom_cat'].' </option>';
     }
 
-    $req7 = "select * from ordonnance";
+
+
+
+
+    $req7 = "SELECT * from ordonnance where pat_id=$code";
     $rs7 = mysqli_query($conn,$req7) or die(mysqli_error());
 
 
 
     
-    if (isset($_POST['ord'])) {
-        $med = $_POST['medicam'];
-        $per = $_POST['per'];
-        $nob = $_POST['nob'];
-        $pri = $_POST['pri'];
-        $qua = $_POST['qua'];
-        $rema = $_POST['rema'];
-    
-    
-    // $id=$_GET['code'];
-        $req8="INSERT INTO ordonnance (nom_med,date_odr,periode,jour,prise,quand,observation) values ('$med',now(), '$per','$nob','$pri','$qua','$rema');";  
-        $row8 =mysqli_query($conn,$req8);
-   
+  
+
+
       
-      }
+    // $req17 = "SELECT * from medicament where id_cat=".$_POST['cat_id'];
+    // $rs17 = mysqli_query($conn,$req17) or die(mysqli_error());
+	// $row17=mysqli_fetch_array($rs17);
 
 
 ?>
 
-<script type="text/javascript">
+                                    
+									<div class="tab-pane fade" id="ordo" role="tabpanel">
+									<div class="pd-20">
+										
+                                        <div class="btn-list pb-3">
+								<button type="button" class="btn btn-success"data-toggle="modal" data-target="#Long" ><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</button>
+								
+							</div>
+                            <h6 style="    text-decoration: underline;text-color:blue" class="text-secondary mb-3">Les ordonnances</h6>
+
+                            <table class="data-table table  hover nowrap" id="example">
+							<thead>
+								<tr>
+                            	<thead>
+								<tr>
+                        
+                                                    <th>    Ordonnace</th>
+                                                    <th>Date</th>    
+                                                    <th>Action</th>
+								</tr>
+							</thead>
+								</tr>
+							</thead>
+                            <tbody>
+                            <?php  while ($row7 = mysqli_fetch_assoc($rs7))  {  ?>
+                                                <tr>
+                                                <td><?php echo ($row7['Id_ord']); ?></td>
+                                                    <td><?php echo ($row7['date_odr']); ?></td>
+                                                     <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a></td>
+                                                </tr>
+                                            <?php }  ?>
+							</tbody>
+						</table>
+
+
+                        <script type="text/javascript">
   function Fetchmed(id){
     $('#med').html('');
     $.ajax({
@@ -261,38 +287,8 @@ while($row = mysqli_fetch_assoc($rs))
   
 </script>
 
-
-
-<div class="row">
-<div class="col-md-6">
-															<label for="form-field-select-3">Choisir une Categorie :</label>
-
-															<br />
-															<select name="cat" id="cat" class="form-control" onchange="Fetchmed(this.value)" > 
-        <option value = "<?php while($row = mysqli_fetch_assoc($rs))
-    {
-      $option .= '<option value = "'.$row['id_cat'].'">'.$row['nom_cat'].'</option>'; }  ?>"><?php echo $option; ?></option>
-    </select>
-														
-
-                                        
-                                                        <table class="table table-bordered table-hover " id="add_more_visitor">
-              <tr>
-                <td name="med" id="med">
-	
-           </td>
-       
-		
-		
-			
-              </tr>
-            </table>
-            </div>
-
-
-        
-                                <!-- Modal -->
-                                <div class="modal fade" id="Long">
+  <!-- Modal -->
+  <div class="modal fade" id="Long">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -300,10 +296,24 @@ while($row = mysqli_fetch_assoc($rs))
                                             </div>
                                             <div class="modal-body">
                                             <form action="" method="post">
+                                            
+															<label>Choisir une Categorie :</label>
 
+															<br />
+															<select name="cat" id="cat" class="form-control" onchange="Fetchmed(this.value)" > 
+        <option value = "<?php while($row = mysqli_fetch_assoc($rs))
+    {
+        
+      $option .= '<option value = "'.$row['id_cat'].'">'.$row['nom_cat'].'</option>'; }  ?>"><?php echo $option; ?></option>
+    </select>
+														
+
+              
+           
                                             <label for="">Medicament</label>
-<input type="text" name="medicam" class="form-control"  >
-
+                                            <select name="med" id="med" class="form-control"   required>
+            <option>Select Medicament</option>
+          </select>
 <label for="">Periode</label>
 <select name="per"  class="form-control"> 
 <option value=""></option>
@@ -353,33 +363,7 @@ while($row = mysqli_fetch_assoc($rs))
 
  <!-- table light start -->
  <div class="col-md-6 ">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="single-table">
-                                    <div class="table-responsive">
-                                    <table class="data-table table  hover nowrap" id="example">
-							<thead>
-								<tr>
-                        
-                                                    <th>    Ordonnace</th>
-                                                    <th>Date</th>    
-                                                    <th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-                            <?php  while ($row7 = mysqli_fetch_assoc($rs7))  {  ?>
-                                                <tr>
-                                                <td><?php echo ($row7['Id_ord']); ?></td>
-                                                    <td><?php echo ($row7['date_odr']); ?></td>
-                                                     <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a></td>
-                                                </tr>
-                                            <?php }  ?>
-							</tbody>
-						</table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                     
                     </div>
                     <!-- table light end -->
 
@@ -406,7 +390,25 @@ while($row = mysqli_fetch_assoc($rs))
 									</div>
 
 
+										</div>
+									</div>
+
+
                                   <!-------------Ordonndance end-------------------->
+                        <?php
+	include ("modals.php")
+	?>
+
+
+										</div>
+									</div>
+
+
+                                  <!-------------Ordonndance end-------------------->
+
+
+
+
                                     <!-------------Certificat begin-------------------->
 
 									<div class="tab-pane fade" id="certif" role="tabpanel">
@@ -577,7 +579,6 @@ while($data = mysqli_fetch_array($records))
 
                                     <div class="tab-pane fade" id="pay" role="tabpanel">
 										<div class="pd-20">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 										</div>
 									</div>
                                                                         <!-------------PAYMENT END-------------------->

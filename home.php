@@ -93,8 +93,8 @@ $result = mysqli_query($conn,"SELECT * FROM rdv ");
 	$num_rows = mysqli_num_rows($result);
 {
 ?>
-								<div class="weight-700 font-24 text-dark"><?php echo htmlentities($num_rows);  } ?>	</div>
-								<div class="font-14 text-secondary weight-500">Patient</div>
+							<a href="patient.php" style ="color:white">		<div class="weight-700 font-24 text-dark"><?php echo htmlentities($num_rows);  } ?>	</div>
+								<div class="font-14 text-secondary weight-500">Patient</div></a>
 							</div>
 							<div class="widget-icon">
 								<div class="icon" data-color="#ff5b5b"><span class="icon-copy ti-user"></span></div>
@@ -201,7 +201,7 @@ $result = mysqli_query($conn,"SELECT * FROM rdv ");
 					<table class="data-table table  hover nowrap" id="example">
 							<thead>
 								<tr>
-                                <th>Patient</th>
+                <th>Patient</th>
                 <th>Heure</th>
                 <th>Type</th>
                 <th>Etat</th>

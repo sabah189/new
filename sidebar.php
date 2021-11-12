@@ -1,6 +1,6 @@
 <div class="left-side-bar">
 		<div class="brand-logo pt-5">
-			<a href="index.html">
+			<a href="home.php">
 				<img src="vendors/images/logop.png" alt="" class="light-logo pt-3" style="width:85px;margin:75px">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">

@@ -1,13 +1,21 @@
 <?php 
 include_once 'conn.php';
 
+
+
+
+
+
+
+
+
 if (isset($_POST['cat_id'])) {
 	$query = "SELECT * FROM medicament where id_cat=".$_POST['cat_id'];
 	$result = mysqli_query($conn,$query) ;
 	if ($result->num_rows > 0 ) {
-			echo '<option value="" style="width:170px">Les medicaments</option>  <br>';
+			echo '<option value="">selectionner medicament</option>';
 		 while ($row = $result->fetch_assoc()) {
-			 echo '<button value ="'.$row['id_med'].'" style="border:none;background-color:none" data-toggle="modal" data-target="#Long">'.$row['nom_med'].'</button>  <br> <br>' ;
+			 echo '<option value='.$row['id_med'].'>'.$row['nom_med'].'</option>';
 		 }
 	}else{
 
@@ -18,4 +26,3 @@ if (isset($_POST['cat_id'])) {
 
 
 ?>
-
