@@ -221,7 +221,7 @@ function delete_id(id)
 {
  if(confirm('Voulez vous vraiment supprimer ce acte ?'))
  {
-  window.location.href='actes.php?delete_id='+id;
+  window.location.href='acte.php?delete_id='+id;
  }
 }
 

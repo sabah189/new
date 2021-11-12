@@ -73,7 +73,7 @@ $result = mysqli_query($conn,"SELECT * FROM patient ");
 	 $num_rows = mysqli_num_rows($result);
 {
  ?>
-				<a href="rdv.php" style ="color:white">				<div class="weight-700 font-24 text-dark"> <?php echo htmlentities($num_rows);  } ?>	</div>
+				<a href="calendar.php" style ="color:white">				<div class="weight-700 font-24 text-dark"> <?php echo htmlentities($num_rows);  } ?>	</div>
 					
 								<div class="font-14 text-secondary weight-500"> Rendez-vous</div>	</a>
 							</div>
