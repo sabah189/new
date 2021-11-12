@@ -16,12 +16,8 @@ $rs2= mysqli_query($conn,$req2);
 $row2 = mysqli_fetch_assoc($rs2);
 
 
-
-$code = $_GET['code'];
-$req9="SELECT *  FROM consultation cons , acte act where act.id_acte=cons.id_acte and pat_id=$code ";
-$rs9 = mysqli_query($conn,$req9);
 	
-  if (isset($_POST['ajouter'])) {
+if (isset($_POST['ajouter'])) {
     $pat = $_POST['pat'];
     $date=$_POST['date'];
     $type = $_POST['type'];
@@ -39,15 +35,21 @@ $rs9 = mysqli_query($conn,$req9);
    
   }
 
-  
 
    
   $code = $_GET['code'];    
   $req5 = "SELECT * from certificat  WHERE pat_id=$code";
   $rs5 = mysqli_query($conn,$req5) ;
+
+ 
+  $req19="SELECT *  FROM consultation where pat_id=$code ";
+$rs19 = mysqli_query($conn,$req19);
+$row19 = mysqli_fetch_assoc($rs19);
+
   
-   
-  
+  $req9="SELECT *  FROM consultation cons , acte act where act.id_acte=cons.id_acte and pat_id=$code ";
+$rs9 = mysqli_query($conn,$req9);
+
   
              if (isset($_POST['ajou'])) {
               $id = $_POST['id'];
@@ -64,14 +66,8 @@ $rs9 = mysqli_query($conn,$req9);
               header('location:dossier.php?code='.$code.'');
             }
              
-            $req19="SELECT *  FROM consultation where pat_id=$code ";
-            $rs19 = mysqli_query($conn,$req19);
-            $row19 = mysqli_fetch_assoc($rs19);
 
-            
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,13 +117,13 @@ $rs9 = mysqli_query($conn,$req9);
 	<<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
-				<div class="page-header">
-					<div class="row">
+				<div class="page-header" style="background-image: url('vendors/images/opticiens.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;">
+					<div class="row" >
 						<div class="col-md-12 col-sm-12">
 					
-							<nav aria-label="breadcrumb" role="navigation">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="patient.php"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
+							<nav aria-label="breadcrumb" role="navigation"  >
+								<ol class="breadcrumb" >
+									<li class="breadcrumb-item"><a href="index.html"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Dossier du patient</li>
 								</ol>
 							</nav>
@@ -187,6 +183,7 @@ $rs9 = mysqli_query($conn,$req9);
                                                     <td><?php echo ($row9['tarif']); ?></td>
 
                                                     <td > <a href="#"data-toggle="modal" data-target="#myModal3" > <i class="fa fa-eye"></i></a>&nbsp;&nbsp;
+                                                  
                                                 </td>
                                 
                                                 </tr>
@@ -201,9 +198,9 @@ $rs9 = mysqli_query($conn,$req9);
 										</div>
 									</div>
                                                                         <!-------------Consultation end-------------------->
-  <!-------------Ordonndance begin-------------------->
+                                    <!-------------Ordonndance begin-------------------->
 
-  <?php 
+                                    <?php 
 
 
 $req = "select * from categorie_med ";
@@ -365,11 +362,7 @@ while($row = mysqli_fetch_assoc($rs))
 
 
 
- <!-- table light start -->
- <div class="col-md-6 ">
-                     
-                    </div>
-                    <!-- table light end -->
+ 
 
 
 
@@ -380,18 +373,6 @@ while($row = mysqli_fetch_assoc($rs))
 
 
 
-            </div>
-
-
-
-
-
-
-
-
-
-										</div>
-									</div>
 
 
 										</div>
@@ -399,20 +380,6 @@ while($row = mysqli_fetch_assoc($rs))
 
 
                                   <!-------------Ordonndance end-------------------->
-                        <?php
-	include ("modals.php")
-	?>
-
-
-										</div>
-									</div>
-
-
-                                  <!-------------Ordonndance end-------------------->
-
-
-
-
                                     <!-------------Certificat begin-------------------->
 
 									<div class="tab-pane fade" id="certif" role="tabpanel">
@@ -628,13 +595,3 @@ while($data = mysqli_fetch_array($records))
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-                 
