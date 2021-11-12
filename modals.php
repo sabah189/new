@@ -123,28 +123,27 @@
                                         <div class="row">
                                         <div class="col">
                                                 <div class="form-group">
-                            <label for="example-text-input" class="col-form-label" >Patient :</label>
-                                <input class="form-control" type="text" name="pat" id="example-text-input" value="" readonly>
+
+                                <input class="form-control" type="hidden" name="pat" id="example-text-input" value="<?php echo ($row1['pat_id']); ?>" readonly>
                         </div>
     
                         <div class="form-group">
                             <label for="example-date-input" class="col-form-label">Date :</label>
-                            <input class="form-control" type="date" name="date" id="example-date-input" readonly>
+                            <input class="form-control" type="date" name="date" id="example-date-input" value="<?php echo $datenow; ?>" readonly>
                         </div>
     
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Motif :</label>
-                                <input class="form-control" type="text" name="motif" id="example-text-input">
+                                <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['motif']); ?>" readonly>
                         </div>
                         <div class="form-group">
                                             <label class="col-form-label">Type :</label>
-                                            <select class="form-control" name="type ">
-                                                <option>--</option>
-                                                <option value="marie">Consultation</option>
-                                                <option value="celibataire">Controle</option>
-                                            
-                                            </select>
+                                            <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" readonly>
+
                         </div>
+
+                    
+
                       
                                                 </div>
     
@@ -163,9 +162,3 @@
                         </div>
                             
                         <!-- Modifier la consultation  modal end -->
-
-
-
-
-
-                        

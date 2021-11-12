@@ -64,7 +64,11 @@ $rs9 = mysqli_query($conn,$req9);
               header('location:dossier.php?code='.$code.'');
             }
              
+            $req19="SELECT *  FROM consultation where pat_id=$code ";
+            $rs19 = mysqli_query($conn,$req19);
+            $row19 = mysqli_fetch_assoc($rs19);
 
+            
 ?>
 
 

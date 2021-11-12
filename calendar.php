@@ -1,4 +1,3 @@
-
 <?php 
 
 include('conn.php');
@@ -17,13 +16,11 @@ while($row = mysqli_fetch_assoc($rs))
     }
 
     if (isset($_POST['ajouter'])) {
-
-
-      $patient =  $_POST['patient'];
-      $date    =  date("Y-m-d");
-      $heure   =  time("H:m:s");
-      $type    =  $_POST['type'];
-	  $statut  =  0;
+      $patient = $_POST['patient'];
+      $date =  date("Y-m-d");
+      $heure = date("H:m:s");
+      $type = $_POST['type'];
+	  $statut=0;
   
       
       $req="INSERT INTO rdv(date,heure,type,statut,pat_id ) values ('$date','$heure','$type','$statut','$patient');";  //requete SQL insertion 
