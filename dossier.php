@@ -123,7 +123,7 @@ $rs9 = mysqli_query($conn,$req9);
 					
 							<nav aria-label="breadcrumb" role="navigation"  >
 								<ol class="breadcrumb" >
-									<li class="breadcrumb-item"><a href="index.html"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
+									<li class="breadcrumb-item"><a href="home.php"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Dossier du patient</li>
 								</ol>
 							</nav>

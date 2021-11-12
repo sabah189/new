@@ -1,8 +1,8 @@
 <?php
 
 
-/* 
-$conn = mysqli_connect("localhost","root","","dentaire");
+
+/* $conn = mysqli_connect("localhost","root","","dentaire");
 
 mysqli_query($conn,"SET NAMES 'utf8'");
 
@@ -10,7 +10,7 @@ mysqli_query($conn,"SET NAMES 'utf8'");
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }  */ 
+  }   */
 
 
   //mysql://bc9de0256b71d3:a2b62260@eu-cdbr-west-01.cleardb.com/heroku_3facac34f0e8bbd?reconnect=true
