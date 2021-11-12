@@ -131,6 +131,16 @@ $rs9 = mysqli_query($conn,$req9);
 					</div>
 				</div>
 
+                <h4>
+							<?php echo ($row1['nom']); ?>						<?php echo ($row1['prenom']); ?>
+							
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									<?php echo ($row1['sexe']); ?> <?php echo ($row1['ddn']); ?>
+
+							</h4>
+
+                            <br>
+
 				<div class="row clearfix">
 					<div class="col-lg-12 col-md-12 col-sm-12 mb-30">
 						<div class="pd-20 card-box">
@@ -479,7 +489,7 @@ if(isset($_POST["submit"]))
 
     move_uploaded_file($_FILES["image"]["tmp_name"],$dst);  // move image into the {all_images} folder with 32 characters hex number and image name
 	
-    $check = mysqli_query($conn,"insert into images(name,image) values('$_POST[name]','$dst_db')");  // executing insert query
+    $check = mysqli_query($conn,"insert into images(name,image,pat_id) values('$_POST[name]','$dst_db','$code')");  // executing insert query
 		
     if($check)
     {
@@ -526,7 +536,7 @@ if(isset($_POST["submit"]))
   </thead>
 <?php
 
-$records = mysqli_query($conn,"select * from images"); // fetch data from database
+$records = mysqli_query($conn,"select * from images where pat_id=$code"); // fetch data from database
 
 while($data = mysqli_fetch_array($records))
 {

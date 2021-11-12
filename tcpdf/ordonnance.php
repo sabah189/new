@@ -61,12 +61,13 @@ class MYPDF extends TCPDF {
 }
 
 // create new PDF document
+
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 051');
+$pdf->SetAuthor('sabah');
+$pdf->SetTitle('Ordonnance');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -90,10 +91,10 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
-}
+// if (@file_exists(dirname(FILE).'/lang/eng.php')) {
+// 	require_once(dirname(FILE).'/lang/eng.php');
+// 	$pdf->setLanguageArray($l);
+// }
 
 // ---------------------------------------------------------
 
@@ -200,7 +201,7 @@ $numResults = mysqli_num_rows($result);
 $counter = 0; 
 
 
-while($row = mysqli_fetch_array($result))  
+while($row1 = mysqli_fetch_array($result))  
 { 
 	$pdf->SetTextColor(51,122,183);
 
@@ -215,19 +216,18 @@ while($row = mysqli_fetch_array($result))
 	$pdf->SetFont('dejavusans', 'BI U', 12);
     $current_x = $current_x+10;
     $pdf->SetXY($current_x, $ttttt); 
-	$pdf->MultiCell(105,5,utf8_decode($row['nom_med']),0, 'L'); 
+	$pdf->MultiCell(105,5,utf8_decode($row1['nom_med']),0, 'L'); 
     $current_x = $current_x+40;
     $pdf->SetXY($current_x, $ttttt); 
 	$pdf->SetFont('dejavusans', 'BI U', 12);
-	$pdf->MultiCell(105,5,utf8_decode($row['dosage']),0, 'L'); 
+	$pdf->MultiCell(105,5,utf8_decode($row1['dosage']),0, 'L'); 
 	$pdf->SetFont('courierBI', '', 11);
     $pdf->SetTextColor(1,1,1);
 
 	$current_x = $current_x+24;
 
     $pdf->SetXY($current_x, $ttttt); 
-	$pdf->MultiCell(105,2,utf8_decode($row['observation']),0, 'L'); 
-    
+	$pdf->Cell(72	,5,'2cp/2j ',0,1);    
 
    
 
@@ -239,13 +239,8 @@ while($row = mysqli_fetch_array($result))
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('example_051.pdf', 'I');
+$pdf->Output('Ordonnance', 'I');
 
 //============================================================+
 // END OF FILE
 //============================================================+
-
-
-
-
-
