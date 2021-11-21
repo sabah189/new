@@ -793,8 +793,8 @@ while($row = mysqli_fetch_assoc($rs))
         "opacity:0;fill:blue;fill-opacity:1;stroke-width:0.67711943"></ellipse>
       </g></svg>
     </div>
-<!--     <form action="" method="post">
- -->    <div class="columns">
+    <form action="" method="post">
+    <div class="columns">
       <div class="column is-full">
       
      
