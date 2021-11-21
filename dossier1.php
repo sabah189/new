@@ -114,7 +114,7 @@ $rs9 = mysqli_query($conn,$req9);
 	?>
 	<div class="mobile-menu-overlay"></div>
 
-	<div class="main-container">
+	<<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header" style="background-image: url('vendors/images/opticiens.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: 100% 100%;">
@@ -123,7 +123,7 @@ $rs9 = mysqli_query($conn,$req9);
 					
 							<nav aria-label="breadcrumb" role="navigation"  >
 								<ol class="breadcrumb" >
-									<li class="breadcrumb-item"><a href="index.html"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
+									<li class="breadcrumb-item"><a href="home.php"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Dossier du patient</li>
 								</ol>
 							</nav>
@@ -138,7 +138,6 @@ $rs9 = mysqli_query($conn,$req9);
 
 							</h4>
                             <br>
-
 				<div class="row clearfix">
 					<div class="col-lg-12 col-md-12 col-sm-12 mb-30">
 						<div class="pd-20 card-box">
@@ -174,7 +173,7 @@ $rs9 = mysqli_query($conn,$req9);
                             <table class="data-table table  hover nowrap" id="example">
 							<thead>
 								<tr>
-                                                          <th>Type</th>
+                                <th>Type</th>
                                                     <th scope="col">Acte</th>
                                                     <th scope="col">Motif</th>
                                                     <th scope="col">Tarif</th>  
@@ -188,10 +187,10 @@ $rs9 = mysqli_query($conn,$req9);
                                                 <td>	<?php echo ($row9['type']); ?></td>
                                                     <td><?php echo ($row9['acte']); ?></td>
                                                     <td><?php echo ($row9['motif']); ?></td>
-                                                    <td><?php echo ($row9['tarif_con']); ?></td>
+                                                    <td><?php echo ($row9['tarif']); ?></td>
 
                                                     <td > <a href="#"data-toggle="modal" data-target="#myModal3" > <i class="fa fa-eye"></i></a>&nbsp;&nbsp;
-                                                    <a href="tcpdf/note.php?code=<?php echo ($row9['id_cons']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a>
+                                                  
                                                 </td>
                                 
                                                 </tr>
@@ -265,14 +264,12 @@ while($row = mysqli_fetch_assoc($rs))
 							</thead>
 								</tr>
 							</thead>
-
                             <tbody>
                             <?php  while ($row7 = mysqli_fetch_assoc($rs7))  {  ?>
                                                 <tr>
                                                 <td><?php echo ($row7['Id_ord']); ?></td>
                                                     <td><?php echo ($row7['date_odr']); ?></td>
-                                                     <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a>
-                                                    </td>
+                                                     <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a></td>
                                                 </tr>
                                             <?php }  ?>
 							</tbody>
@@ -558,107 +555,8 @@ while($data = mysqli_fetch_array($records))
                                                                         <!-------------IMAGERIE END-------------------->
                                     <!-------------PAYMENT begin-------------------->
 
-                                    <?php
-
-                                    ?>
                                     <div class="tab-pane fade" id="pay" role="tabpanel">
-                                    <div class="pd-20">
-										
-                                        <div class="btn-list pb-3">
-								<a   class="btn btn-success"><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</a>
-								
-							</div>
-                            <h6 style="    text-decoration: underline;text-color:blue" class="text-secondary mb-3">Historique des paiement</h6>
-
-                            <table class="data-table table  hover nowrap" id="example">
-							<thead>
-								<tr>
-                                                          <th>Date</th>
-                                                    <th scope="col">Acte</th>
-                                                    <th scope="col">Total</th>
-                                                    <th scope="col">Avance </th>  
-                                                    <th scope="col">Rest </th>                 
-                                                    <th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-                            <!-- <-?php  while ($row9 = mysqli_fetch_assoc($rs9))  {  ?>
-                                <tr>
-                                                <td>	<-?php echo ($row9['type']); ?></td>
-                                                    <td><-?php echo ($row9['acte']); ?></td>
-                                                    <td><-?php echo ($row9['motif']); ?></td>
-                                                    <td><-?php echo ($row9['tarif_con']); ?></td>
-
-                                                    <td > <a href="#"data-toggle="modal" data-target="" > <i class="fa fa-eye"></i></a>&nbsp;&nbsp;
-                                                  
-                                                </td>
-                                
-                                                </tr>
-								<-?php } ?> -->
-							</tbody>
-						</table>
- 
-                                  <!-- Modifier la consultation modal -->
-                                  <div class="col-md-4 col-sm-12 mb-30">
-                            
-                            
-                            <div class="modal fade bs-example-modal-lg" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        </div>
-                                        <div class="modal-body">
-                                    
-                                        <div class="row">
-                                        <div class="col">
-                                                <div class="form-group">
-
-                                <input class="form-control" type="hidden" name="pat" id="example-text-input" value="<?php echo ($row1['pat_id']); ?>" >
-                        </div>
-    
-                        <div class="form-group">
-                            <label for="example-date-input" class="col-form-label">Date :</label>
-                            <input class="form-control" type="date" name="date" id="example-date-input" value="<?php echo $datenow; ?>" readonly>
-                        </div>
-    
-                        <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Dent :</label>
-                                <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['motif']); ?>" >
-                        </div>
-                        <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Surface :</label>
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
-             
-                        </div>
-                        <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Acte :</label>
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
-             
-                        </div>
-                      
-                        <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Acte :</label>
-
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
-                        </div>
-                                                </div>
-    
-                                        
-                                                </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                        <input type="submit" class="btn btn-primary" name="ajouter" value="Ajouter">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
-                        <!-- Modifier la consultation  modal end -->
-
-
+										<div class="pd-20">
 										</div>
 									</div>
                                                                         <!-------------PAYMENT END-------------------->
@@ -704,13 +602,3 @@ while($data = mysqli_fetch_array($records))
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-                 

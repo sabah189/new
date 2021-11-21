@@ -3,49 +3,32 @@
 
 include("conn.php");
 
- $datenow = date('Y-m-d H:i:s');
-    //session_start();    
 
-if(isset($_POST["go"]))
-
-
-{
-	$user   = $_POST["log"];
-	$passe1 = $_POST["pas"];
-	$passe  = ($passe1);
-
-    $query = "SELECT * FROM user WHERE user_name='".$user."' AND user_password='".$passe."'";
-    $result = mysqli_query($conn, $query);
-
-
-if ($result) 
+if (isset($_POST['go'])) 
 {
 
-    $row                      = mysqli_fetch_assoc($result);
-	$iduseris                 = $row['user_id'];
-	$statut                   = $row['statut'];
-	$_SESSION["session_login"]= $row['user_name'];
-	
+    $name              = addslashes($_POST['log']);
+    $password          = addslashes($_POST['pas']);
+    $statut            = 0;
+    $activity          = date('Y-m-d H:i:s');
+    $inscri            = date('Y-m-d');
+     
+ 
+    $req    ="INSERT INTO user(user_name,user_password,statut,last_activity,user_date) values ('$name','$password','$statut','$activity ','$inscri');"; 
+    $result = mysqli_query($conn, $req);
 
 
-    $update1="UPDATE user set last_activity='".$datenow."' WHERE user_name='".$user."' AND user_password='".$passe."'";
-    mysqli_query($conn, $update1);
+	if($result){
+		echo ("<script LANGUAGE='JavaScript'>
+		window.alert('Félicitations enregistrement effectué avec succès')
+		window.location.href='index.php';
+		</script>");
+	}
 
 
-	if ($user=!$row['user_name'] || $passe=!$row['user_password'])
-	{
-        echo "<script>alert(\"Attention ! le nom d'utilisateur ou le mot de passe est incorrect.\")</script>";
-    }
-	
-	else{
-        header('location: home.php');
-     }
-}
-}
-
-
-
-    
+ 
+ }
+   
 
 ?>
 
@@ -94,23 +77,10 @@ if ($result)
 						</div>
 						<form method="post">
 							<div class="select-role">
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-									<label class="btn active">
-										<input type="radio" name="options" id="admin">
-										<div class="icon"><img src="vendors/images/briefcase.svg" class="svg" alt=""></div>
-										<span>Je suis </span>
-										Assistant(e)
-									</label>
-									<label class="btn">
-										<input type="radio" name="options" id="user">
-										<div class="icon"><img src="vendors/images/person.svg" class="svg" alt=""></div>
-										<span>Je suis</span>
-										Docteur
-									</label>
-								</div>
+								
 							</div>
 							<div class="input-group custom">
-								<input type="text" class="form-control form-control-lg" placeholder="Nom d'utilisateur" name="log">
+								<input type="text" class="form-control form-control-lg" placeholder="Nom d'utilisateur" name="log" required>
 								<div class="input-group-append custom">
 									<span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
 								</div>
@@ -121,27 +91,26 @@ if ($result)
 									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
 								</div>
 							</div>
-							
+                            <div class="input-group custom">
+								<input type="password" class="form-control form-control-lg" placeholder="confirmer mot de passe" name="pas">
+								<div class="input-group-append custom">
+									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+								</div>
+							</div>
+                                          
 							<div class="row">
 								<div class="col-sm-12">
 									<div class="input-group mb-0">
 										<!--
 											use code for form submit
 										-->
-										<input class="btn btn-primary btn-lg btn-block" name="go" type="submit" value="Se connecter">
+										<input class="btn btn-primary btn-lg btn-block" name="go" type="submit" value="Valider">
 
 									</div>
-									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OU</div>
-									<div class="input-group mb-0">
-										<a class="btn btn-outline-primary btn-lg btn-block" href="register.php">Créer compte</a>
-									</div> -->
+                                    <br>
 
-									<div class="form-footer text-center mt-5">
-                            <p class="text-muted">Pas de compte ?  &nbsp;<a href="register.php" style="color: #84cde1">  &nbsp;Créer le !</a></p>
-							
-                            <!-- <p class="text-muted">User : admin  </p>   <p class="text-muted">Password : admin  </p> -->
-                        </div>
-									
+                                    <a href="index.php" style="color: #84cde1">Page de connexion.</a>
+
 									
 								</div>
 							</div>

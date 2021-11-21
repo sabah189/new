@@ -38,9 +38,102 @@ class MYPDF extends TCPDF {
 		$this->SetAutoPageBreak($auto_page_break, $bMargin);
 		// set the starting point for the page content
 		$this->setPageMark();
-	}
-}
 
+		$this->SetXY(13,3.4);
+		//Cell(width , height , text , border , end line , [align] )
+		$this->SetTextColor(51,122,183);
+		 $this->Ln(1.4);
+		 $this->SetX(8);
+		 $this->SetFont('timesBI', '', 10);
+		
+		$this->Cell(120	,5,'DOCTEUR Ahmed Ahmed ',0,0);
+		
+		$this->SetFont('aefurat', '', 15);
+		$this->SetX(-45);
+		$this->Cell(169	,5,'الدكتور احمد احمد',0,1);//end of line
+		
+		$this->SetX(7);
+		
+		//set font to arial, regular, 12pt
+		$this->SetFont('timesI', '', 10);
+		$this->SetTextColor(51,122,183);
+		$this->Cell(150	,4,'Specialiste des maladies et chirurgie',0,0);
+		$this->SetX(-65);
+		$this->SetTextColor(51,122,183);
+		$this->SetFont('aefurat', '', 10);
+		$this->SetX(-47);
+		$this->Cell(150	,5,' أخصائي طب وجراحة الأسنان  ',0 ,0 );
+		
+		
+		$this->SetY(21);
+		$this->SetX(146);
+		$this->Cell(150	,5,' حاصل على دبلوم الدولة في جراحة الأسنان   ',0 ,0 );
+		
+		$this->SetY(26);
+		$this->SetX(140);
+		$this->Cell(150	,5,' رئيس سابق في دبلوم الدولة في جراحة الأسنان   ',0 ,0 );
+		
+		
+		
+		$this->SetY(19);
+		$this->SetDrawColor(240,240,240); 
+		$this->SetLineWidth(0.9);
+		$this->Line(6.13,$this->GetY(),63.13,$this->GetY());
+		
+		$this->SetX(180);
+		$style = array('width' => 0.9, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(240, 240, 240));
+		$this->Line(159,$this->GetY(),208,$this->GetY(), $style ) ;
+		
+		
+		$this->SetY(21);
+		$this->SetX(-240);
+		
+		$this->SetFont('times', '', 10);
+		$this->SetTextColor(51,122,183);
+		$html = <<<EOD
+		<ul style="list-style-type: circle;  ">
+		<li>
+		Titulaire dun diplôme dEtat de docteur <br>
+		 en chirurgie dentaire
+		</li>
+		<li>
+		Titulaire dun diplôme dEtat de docteur <br>
+		
+		</li>
+		</ul>
+		EOD;
+		$this->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+	
+
+		$this->Cell(89	,5,'',0,1);//end of line
+$this->SetTextColor(1,1,1);
+$this->SetFont('courierBI', '', 10);
+
+$this->SetXY(-188,61);
+$this->SetTextColor(51,122,183);
+
+$this->Cell(72	,5,'Date :',0,1);
+
+$this->SetXY(17,79);
+$this->SetTextColor(51,122,183);
+
+$this->Cell(69	,6,'Patient :',0,1);
+$this->SetY(61);
+$this->SetX(40);
+$this->SetTextColor(1,1,1);
+$this->MultiCell(105,5,date("F j, Y"),0, 'L'); 
+
+$this->SetY(47);
+// print some spot colors
+$this->SetFont('dejavusans', 'BI U', 12);
+$this->MultiCell(170,20,(" Certificat"),0, 'C'); 
+
+	}
+
+
+
+	
+}
 
 
 
@@ -53,28 +146,7 @@ $retrait = "         ";
 
 
 
-$pdf->SetXY(13,9.4);
-//Cell(width , height , text , border , end line , [align] )
-$pdf->SetTextColor(51,122,183);
- $pdf->Ln(1.4);
- $pdf->SetX(15);
-$pdf->Cell(120	,5,'Docteur DOCTEUR ',0,0);
 
-$pdf->SetFont('aefurat', '', 15);
-$pdf->SetX(-35);
-$pdf->Cell(169	,5,'الدكتور',0,1);//end of line
-
-$pdf->SetX(15);
-
-//set font to arial, regular, 12pt
-$pdf->SetFont('dejavusans', '', 10);
-$pdf->SetTextColor(51,122,183);
-$pdf->Cell(150	,5,'MEDECIN DENTAIRE',0,0);
-$pdf->SetX(-65);
-$pdf->SetTextColor(51,122,183);
-$pdf->SetFont('aefurat', '', 10);
-$pdf->SetX(-35);
-$pdf->Cell(150	,4,'طب الاسنان',0,0);
 $pdf->Cell(89	,5,'',0,1);//end of line
 $pdf->SetTextColor(1,1,1);
 $pdf->SetFont('courierBI', '', 10);
@@ -82,22 +154,16 @@ $pdf->SetFont('courierBI', '', 10);
 
 $pdf->SetXY(-188,61);
 
-$pdf->Cell(72	,5,'Date :',0,1);
 
 $pdf->SetXY(19,79);
 
-$pdf->Cell(72	,6,'Patient :',0,1);
-$pdf->SetY(61);
-$pdf->SetX(40);
+
 
 $pdf->SetY(79.7);
 $pdf->SetX(40);
 $pdf->MultiCell(105,5, $nom_prenom ,0, 'L'); 
 
-$pdf->SetY(47);
-// print some spot colors
-$pdf->SetFont('dejavusans', 'BI U', 12);
-$pdf->MultiCell(170,20,("CERTIFICAT MEDICAL"),0, 'C'); 
+
 
 
 
