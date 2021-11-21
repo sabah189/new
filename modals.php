@@ -61,7 +61,7 @@
                            <div class="form-group">
                     <label class="col-form-label">Acte :</label>
                     <select name="acte" id="acte" class="form-control" onchange="Fetchmed(this.value)" > 
-           
+           <option value=""hidden>--</option>
                 <option value="<?php echo $option; ?>"></option>
         </select>
            
@@ -107,6 +107,7 @@
                                 <!----------------  Ajouter consultation modal end ------------->
     
     
+    
                                   <!-- Modifier la consultation modal -->
                                   <div class="col-md-4 col-sm-12 mb-30">
                             
@@ -115,7 +116,6 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myLargeModalLabel">Modifier la consultation</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body">
@@ -133,28 +133,34 @@
                         </div>
     
                         <div class="form-group">
-                            <label for="example-text-input" class="col-form-label">Motif :</label>
+                            <label for="example-text-input" class="col-form-label">Dent :</label>
                                 <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['motif']); ?>" readonly>
                         </div>
                         <div class="form-group">
-                                            <label class="col-form-label">Type :</label>
-                                            <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" readonly>
-
+                        <label for="example-text-input" class="col-form-label">Surface :</label>
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" readonly>
+             
                         </div>
-
-                    
-
+                        <div class="form-group">
+                        <label for="example-text-input" class="col-form-label">Acte :</label>
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" readonly>
+             
+                        </div>
                       
+                        <div class="form-group">
+                        <label for="example-text-input" class="col-form-label">Acte :</label>
+
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" readonly>
+                        </div>
                                                 </div>
     
                                                 <div>
-                                                <img src="vendors/images/dental.png" alt="">
+                                                <img src="vendors/images/dental.svg" alt="">
                                                 </div>
                                                 </div>
                                         </div>
                                         <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                    <button type="button" class="btn btn-primary">Modifier</button>
                                                 </div>
                                     </div>
                                 </div>

@@ -130,6 +130,7 @@ $rs9 = mysqli_query($conn,$req9);
 						</div>
 					</div>
 				</div>
+
                 <h4>
 							<?php echo ($row1['nom']); ?>						<?php echo ($row1['prenom']); ?>
 							
@@ -269,13 +270,58 @@ while($row = mysqli_fetch_assoc($rs))
                             <tbody>
                             <?php  while ($row7 = mysqli_fetch_assoc($rs7))  {  ?>
                                                 <tr>
-                                                <td><?php echo ($row7['Id_ord']); ?></td>
+                                                <td><a href="" data-toggle="modal" data-target="#myModal5"><?php echo 'ORD'.date('ym', strtotime($row7["date_odr"])).'-'.sprintf('%04d', $row7['Id_ord']);  ?></a></td>
                                                     <td><?php echo ($row7['date_odr']); ?></td>
                                                      <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php }  ?>
 							</tbody>
+                            <!-- Modal -->
+  <div class="modal fade" id="myModal5">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form action="" method="post">
+                                 
+                                            <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Medicament</label>
+                                <input class="form-control" type="text" name="de" id="example-text-input" readonly value ="Doliprane">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Periode</label>
+                                <input class="form-control" type="text" name="de" id="example-text-input" value="7j" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Jour</label>
+                                <input class="form-control" type="text" name="de" id="example-text-input" value="3 fois" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">prise</label>
+                                <input class="form-control" type="text" name="de" id="example-text-input" value="1cc" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-text-input" class="col-form-label">Quand</label>
+                                <input class="form-control" type="text" name="de" id="example-text-input" value="Avant" readonly>
+                        </div>
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" name="ord" value="Ajouter">
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                 
+                    <!-- basic modal end -->
+
 						</table>
 
 
@@ -413,7 +459,7 @@ while($row = mysqli_fetch_assoc($rs))
                             <tbody>
                                         <?php  while ($et = mysqli_fetch_assoc($rs5))  {  ?>
                                             <tr>
-                                            <td> <?php echo ($et['id_certif']); ?></td>
+                                            <td> <?php echo 'CERT'.date('ym', strtotime($et["de"])).'-'.sprintf('%04d', $et['id_certif']);  ?></td>
                                                 <td> <?php echo ($et['de']); ?> <?php echo ($et['a']); ?></td>
                                                 <td>   &nbsp;&nbsp;
                                                 <a href="tcpdf/rapport.php?code=<?php echo ($et['id_certif']); ?>&code=<?php echo ($row1['pat_id'])?>" > <i class="fa fa-print"></i></a>     </td>
@@ -565,7 +611,7 @@ while($data = mysqli_fetch_array($records))
                                     <div class="pd-20">
 										
                                         <div class="btn-list pb-3">
-								<a   class="btn btn-success"><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</a>
+								<a  data-toggle="modal" data-target="#myModal4" class="btn btn-success"><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</a>
 								
 							</div>
                             <h6 style="    text-decoration: underline;text-color:blue" class="text-secondary mb-3">Historique des paiement</h6>
