@@ -191,7 +191,8 @@ $rs9 = mysqli_query($conn,$req9);
                                                     <td><?php echo ($row9['motif']); ?></td>
                                                     <td><?php echo ($row9['tarif_con']); ?></td>
 
-                                                    <td > <a href="#"data-toggle="modal" data-target="#myModal3" > <i class="fa fa-eye"></i></a>&nbsp;&nbsp;
+                                                    <td > 
+                                                    <!-- <a href="#"data-toggle="modal" data-target="#myModal3" > <i class="fa fa-eye"></i></a>&nbsp;&nbsp; -->
                                                     <a href="tcpdf/note.php?code=<?php echo ($row9['id_cons']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a>
                                                 </td>
                                 
@@ -615,7 +616,7 @@ while($data = mysqli_fetch_array($records))
                                     <div class="pd-20">
 										
                                         <div class="btn-list pb-3">
-								<a  data-toggle="modal" data-target="#myModal4" class="btn btn-success"><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</a>
+								<a  class="btn btn-success"><i class="icon-copy fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Nouveau</a>
 								
 							</div>
                             <h6 style="    text-decoration: underline;text-color:blue" class="text-secondary mb-3">Historique des paiement</h6>
