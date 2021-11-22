@@ -123,7 +123,7 @@ $rs9 = mysqli_query($conn,$req9);
 					
 							<nav aria-label="breadcrumb" role="navigation"  >
 								<ol class="breadcrumb" >
-									<li class="breadcrumb-item"><a href="index.html"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
+									<li class="breadcrumb-item"><a href="patient.php"><i class="icon-copy fa fa-users" aria-hidden="true"></i> &nbsp;Retour</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Dossier du patient</li>
 								</ol>
 							</nav>
@@ -531,11 +531,14 @@ if(isset($_POST["submit"]))
 
     $fnm = $_FILES["image"]["name"];    // get the image name in $fnm variable
     $dst = "all_images/".$var3.$fnm;  // storing image path into the {all_images} folder with 32 characters hex number and file name
-    $dst_db = "all_images/".$var3.$fnm; // storing image path into the database with 32 characters hex number and file name
+    $dst_db = "all_images/".$var3.$fnm; // storing image path into the database with 32 characters hex number and file namespace
+
+    $code = $_POST['id'];
+
 
     move_uploaded_file($_FILES["image"]["tmp_name"],$dst);  // move image into the {all_images} folder with 32 characters hex number and image name
 	
-    $check = mysqli_query($conn,"insert into images(name,image) values('$_POST[name]','$dst_db')");  // executing insert query
+    $check = mysqli_query($conn,"insert into images(name,image,pat_id) values('$_POST[name]','$dst_db','$code')");  // executing insert query
 		
     if($check)
     {
@@ -555,7 +558,8 @@ if(isset($_POST["submit"]))
                                         <form method="post" enctype="multipart/form-data">
   <table>
     <tr>
-    
+          <input type="hidden" name="id" value="<?php echo $code ?>">
+
      <input type="text" name="name" placeholder="Nom"  class="form-control mb-3" Required>
     </tr>
     <tr>
@@ -566,7 +570,7 @@ if(isset($_POST["submit"]))
   
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="submit" value="  Télécharger " class="input-group-text mt-3"></td>			
+      <td colspan="2"><input type="submit" name="submit" value=" Télécharger " class="input-group-text mt-3"></td>			
     </tr>
   </table>
 </form>
@@ -582,7 +586,7 @@ if(isset($_POST["submit"]))
   </thead>
 <?php
 
-$records = mysqli_query($conn,"select * from images"); // fetch data from database
+$records = mysqli_query($conn,"SELECT * FROM images WHERE pat_id=$code"); // fetch data from database
 
 while($data = mysqli_fetch_array($records))
 {

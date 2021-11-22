@@ -50,7 +50,7 @@ while($row = mysqli_fetch_assoc($rs))
 <head>
   <meta name="generator" content=
   "HTML Tidy for HTML5 for Linux version 5.2.0">
-  <title>SVG dental charting</title>
+  <title>Consultation</title>
   <link href="src/css/bulma.min.css" rel="stylesheet">
   <link href="src/css/style.css" rel="stylesheet">
  	<!-- Site favicon -->
@@ -100,20 +100,10 @@ while($row = mysqli_fetch_assoc($rs))
 					</div>
 				</div>
         
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-        <div class="pull-left">
-					    
-                                                <label class="label">Type :</label>
-                                                <select class="form-control" name="type">
-                                                    <option hidden>--</option>
-                                                    <option value="Consultation">Consultation</option>
-                                                    <option value="Controle">Controle</option>
-                                                
-                                                </select>
-                           
-						</div>
 
+				<!-- Default Basic Forms Start -->
+				<div class="pd-10 card-box mb-30">
+            
 				<div class="app">
     
     <div class="columns no-top-margin flex-middle" >
@@ -793,10 +783,22 @@ while($row = mysqli_fetch_assoc($rs))
         "opacity:0;fill:blue;fill-opacity:1;stroke-width:0.67711943"></ellipse>
       </g></svg>
     </div>
+
+
     <form action="" method="post">
     <div class="columns">
       <div class="column is-full">
-      
+      <div class="pull-left">
+					    
+              <label class="label">Type :</label>
+              <select class="form-control" name="type">
+                  <option hidden>--</option>
+                  <option value="Consultation">Consultation</option>
+                  <option value="Contrôle">Contrôle</option>
+              
+              </select>
+
+</div>
      
         <div class="row">
 							<div class="col-md-4 col-sm-12">

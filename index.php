@@ -131,16 +131,11 @@ if ($result)
 										<input class="btn btn-primary btn-lg btn-block" name="go" type="submit" value="Se connecter">
 
 									</div>
-									<!-- <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OU</div>
+									 <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">OU</div>
 									<div class="input-group mb-0">
-										<a class="btn btn-outline-primary btn-lg btn-block" href="register.php">Créer compte</a>
-									</div> -->
+										<a class="btn btn-outline-primary btn-lg btn-block" href="register.php">Créer un compte</a>
+									</div> 
 
-									<div class="form-footer text-center mt-5">
-                            <p class="text-muted">Pas de compte ?  &nbsp;<a href="register.php" style="color: #84cde1">  &nbsp;Créer le !</a></p>
-							
-                            <!-- <p class="text-muted">User : admin  </p>   <p class="text-muted">Password : admin  </p> -->
-                        </div>
 									
 									
 								</div>

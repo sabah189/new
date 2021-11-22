@@ -30,7 +30,9 @@ $row_info = mysqli_fetch_assoc($rs5);
 	}
 
 	
-	if (isset($_POST['ajouter'])) {
+	if (isset($_POST['ajouter']))
+	
+	{
 		$med = $_POST['med'];
 		$obs = $_POST['obs'];
 		$dos = $_POST['dos'];
