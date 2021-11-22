@@ -109,7 +109,7 @@ if (isset($_POST['go']))
 									</div>
                                     <br>
 
-                                    <a href="index.php" style="color: #84cde1">Page de connexion.</a>
+									<i style="color: #84cde1" class="fa fa-long-arrow-left" aria-hidden="true"></i>  <a href="index.php" style="color: #84cde1">Page de connexion.</a>
 
 									
 								</div>
