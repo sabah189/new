@@ -674,23 +674,23 @@ while($data = mysqli_fetch_array($records))
     
                         <div class="form-group">
                             <label for="example-text-input" class="col-form-label">Dent :</label>
-                                <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['motif']); ?>" >
+                                <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['dent']); ?>" >
                         </div>
                         <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Surface :</label>
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['surface']); ?>" >
              
                         </div>
                         <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Acte :</label>
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['acte']); ?>" >
              
                         </div>
                       
                         <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Acte :</label>
 
-                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['type']); ?>" >
+                        <input class="form-control" type="text" name="motif" id="example-text-input" value="<?php echo ($row19['acte']); ?>" >
                         </div>
                                                 </div>
     
