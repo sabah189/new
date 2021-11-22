@@ -271,7 +271,7 @@ while($row = mysqli_fetch_assoc($rs))
                             <tbody>
                             <?php  while ($row7 = mysqli_fetch_assoc($rs7))  {  ?>
                                                 <tr>
-                                                <td><a href="" data-toggle="modal" data-target="#myModal5"><?php echo 'ORD'.date('ym', strtotime($row7["date_odr"])).'-'.sprintf('%04d', $row7['Id_ord']);  ?></a></td>
+                                                <td><a href="" data-toggle="modal" data-target="#myModal5" style="font-size:15px;color:black; background-color:#e0e0e0"><?php echo 'ORD'.date('ym', strtotime($row7["date_odr"])).'-'.sprintf('%04d', $row7['Id_ord']);  ?></a></td>
                                                     <td><?php echo ($row7['date_odr']); ?></td>
                                                      <td><a href="tcpdf/ordonnance.php?code=<?php echo ($row7['Id_ord']); ?>&code=<?php echo ($row1['pat_id'])?>"><i class="fa fa-print"></i></a>
                                                     </td>
@@ -313,8 +313,7 @@ while($row = mysqli_fetch_assoc($rs))
 
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <input type="submit" class="btn btn-primary" name="ord" value="Ajouter">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                             </div>
                                             </form>
                                         </div>
